@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>样式演示</title>
+    <style>
+        body{
+            background-image: url("../../pic/bg.png");
+        }
+        .center{
+            background-color: white;
+            width: 400px;
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="../../pic/logo.png"/>
+    </div>
+    <div class="center">
+        <div>注册详情</div>
+        <hr/>
+        <form action="#" method="get" autocomplete="off">
+            <div>
+                <label for="username">姓名：</label>
+                <input type="text" id="username" name="uesrname" value="" placeholder="请输入姓名" required/>
+            </div>
+            <div>
+                <label for="password">密码：</label>
+                <input type="password" id="password" name="password" value="" placeholder="请输入密码" required/>
+            </div>
+            <div>
+                <label for="email">邮箱：</label>
+                <input type="email" id="email" name="email" value="" placeholder="请输入邮箱"/>
+            </div>
+            <div>
+                <label for="tel">手机：</label>
+                <input type="tel" id="tel" name="tel" value="" placeholder="请输入手机"/>
+            </div>
+            <hr/>
+            <div>
+                <label for="sex">性别：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <input type="radio" id="sex" name="sex" value="men"/>男 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio"  name="sex" value="women"/>女&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div>
+                <label for="hobby">爱好：&nbsp;&nbsp;</label>
+                <input type="checkbox" id="hobby" name="hobby" value="game"/>游戏
+                <input type="checkbox" name="hobby" value="movie"/>电影
+                <input type="checkbox" name="hobby" value="music"/>音乐
+            </div>
+            <div>
+                <label for="birthday">出生日期：</label>
+                <input type="date" id="birthday" name="birthday" value=""/>
+            </div>
+            <div>
+                <label for="city">所在城市：</label>
+                <select id="city" name="city">
+                    <option>--请选择所在城市--</option>
+                    <option>北京</option>
+                    <option>上海</option>
+                    <option>天津</option>
+                    <option>重庆</option>
+                </select>
+            </div>
+            <hr/>
+            <div>
+                <label for="desc">个性签名：</label>
+                <textarea id="desc" name="desc" rows="5" cols="40" placeholder="请写下您的特点"></textarea>
+            </div>
+            <button type="submit">注册</button>
+            <button type="reset">重置</button>
+        </form>
+    </div>
+
+</form>
+</body>
+</html>*\6

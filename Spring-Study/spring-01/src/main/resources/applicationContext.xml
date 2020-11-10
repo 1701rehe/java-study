@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--    <bean id="c1" class="yf513.chy.lifeInit.Categroy" init-method="init">-->
+    <!--        <property name="id" value="10"/>-->
+    <!--        <property name="name" value="chy"/>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="c2" class="yf513.chy.lifeInit.Categroy">-->
+    <!--        <property name="id" value="10"/>-->
+    <!--        <property name="name" value="chy"/>-->
+    <!--    </bean>-->
+
+    <!--   即每个bean创建时均要通过 -->
+    <!--<bean id="myBeanPostProcessor" class="yf513.chy.lifeInit.MyBeanProcessor"/>-->
+    <bean id="c3" class="yf513.chy.lifeInit.Categroy" lazy-init="true">
+        <property name="id" value="10"/>
+        <property name="name" value="chy"/>
+    </bean>
+
+<!--    &lt;!&ndash;    创建实现类对象(即目标类)&ndash;&gt;-->
+<!--    <bean id="student1" class="yf513.chy.proxy.logMethod" lazy-init="true"/>-->
+<!--    &lt;!&ndash;    创建增强类对象&ndash;&gt;-->
+<!--    <bean id="logHandle1" class="yf513.chy.proxy.LogBefore" lazy-init="true"/>-->
+<!--    &lt;!&ndash;    定义切点&ndash;&gt;-->
+<!--    <bean id="logPointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" lazy-init="true">-->
+<!--        <property name="pattern" value=".*login"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash;    定义切面  增强类和切点的组合&ndash;&gt;-->
+<!--    <bean id="logAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor" lazy-init="true">-->
+<!--        <property name="advice" ref="logHandle1"/>-->
+<!--        <property name="pointcut" ref="logPointcut"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash;    定义代理类&ndash;&gt;-->
+<!--    <bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean" lazy-init="true">-->
+<!--        <property name="target" ref="student1"/>-->
+<!--        <property name="interfaces">-->
+<!--            <list>-->
+<!--                <value>yf513.chy.proxy.StudentDAO</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--        <property name="interceptorNames">-->
+<!--            <list>-->
+<!--                <value>logAdvisor</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+    <!--    <bean id="student2" class="yf513.chy.proxy.logMethod" lazy-init="true"/>-->
+    <!--    <bean id="logHandle2" class="yf513.chy.proxy.LogBefore" lazy-init="true"/>-->
+    <!--    <aop:config>-->
+    <!--        <aop:pointcut id="log" expression="execution(* login(..))"/>-->
+    <!--        <aop:advisor advice-ref="logHandle2" pointcut-ref="log"/>-->
+    <!--    </aop:config>-->
+
+    <bean id="student2" class="yf513.chy.proxy.StudentImpl" lazy-init="true"/>
+<!--    <bean id="logHandle1" class="yf513.chy.proxy.LogBefore" lazy-init="true"/>-->
+<!--    <bean id="logHandle2" class="yf513.chy.proxy.LogAfter" lazy-init="true"/>-->
+<!--    <aop:config>-->
+<!--        <aop:pointcut id="log" expression="execution(* login(..))"/>-->
+<!--        <aop:advisor advice-ref="logHandle1" pointcut-ref="log"/>-->
+<!--        <aop:advisor advice-ref="logHandle2" pointcut-ref="log"/>-->
+<!--    </aop:config>-->
+
+    <bean id="jdkProxy" class="yf513.chy.proxy.StudentJDKProxy">
+        <constructor-arg ref="student2"/>
+    </bean>
+
+</beans>

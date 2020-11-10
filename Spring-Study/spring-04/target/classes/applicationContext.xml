@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--  连接池配置  -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/db1?useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
+    <!--  创建sqlSessionFactoryBean  -->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--    配置数据库 必须！！    -->
+        <property name="dataSource" ref="dataSource"/>
+        <!--    配置别名   -->
+        <property name="typeAliasesPackage" value="com.cqupt.domain"/>
+        <!--    配置mapper文件位置    -->
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:com/cqupt/dao/*Mapper.xml</value>
+            </list>
+        </property>
+        <!--    配置mybatis.xml文件    -->
+        <!--        <property name="configLocation" value="classpath:mybatis-config.xml"/>-->
+    </bean>
+
+    <!--  创建DAO对象  -->
+    <bean id="scanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--    配置sqlSessionFactory    -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"/>
+        <!--    配置DAO接口所在包    -->
+        <property name="basePackage" value="com.cqupt.dao"/>
+    </bean>
+
+    <!--  原始对象  -->
+    <bean id="userService" class="com.cqupt.service.UserServiceImpl">
+        <!--        <property name="userDAO" ref="userDAO"/>-->
+    </bean>
+
+    <!--  额外功能  -->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--  组装  -->
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
+
+    <context:component-scan base-package="com.cqupt.service"/>
+</beans>

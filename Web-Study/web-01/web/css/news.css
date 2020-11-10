@@ -1,0 +1,70 @@
+/*div{
+    border: 1px solid red;
+}*/
+
+/*顶部样式*/
+.top{
+    background: black;  /*背景色*/
+    line-height: 40px;  /*行高*/
+    text-align: right;  /*文字水平对齐*/
+    font-size: 20px;    /*字体大小*/
+}
+/*顶部超链接*/
+.top a{
+    color: white;   /*文字颜色*/
+}
+
+/*导航条样式*/
+.nav{
+    line-height: 40px;  /*行高*/
+}
+
+/*左侧分享样式*/
+.left{
+    width: 20%;         /*宽度*/
+    text-align: center; /*文字水平对齐*/
+    float: left;        /*浮动*/
+}
+/*左侧图片大小*/
+.left img{
+    width: 38px;    /*宽度*/
+    height: 38px;   /*高度*/
+}
+/*左侧文字*/
+.left span{
+    vertical-align: 50%;    /*垂直居中对齐*/
+}
+
+/*中间正文样式*/
+.center{
+    width: 60%;     /*宽度*/
+    float: left;    /*浮动*/
+}
+
+/*右侧广告图片样式*/
+.right{
+    width: 20%;     /*宽度*/
+    float: left;    /*浮动*/
+}
+
+/*底部页脚样式*/
+.footer{
+    clear: both;        /*清除浮动*/
+    background: blue;   /*背景色*/
+    text-align: center; /*文字水平对齐*/
+    line-height: 25px;  /*行高*/
+}
+/*底部页脚超链接*/
+.footer a{
+    color: white;   /*文字颜色*/
+}
+
+/*超链接样式*/
+a{
+    text-decoration: none;  /*去除下划线*/
+    color: black;           /*文字颜色*/
+}
+/*超链接悬浮样式*/
+a:hover{
+    color: red; /*鼠标悬浮颜色*/
+}

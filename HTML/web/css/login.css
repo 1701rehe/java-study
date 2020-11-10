@@ -1,0 +1,54 @@
+body {
+    background: url("../../pic/bg.png");
+}
+
+.center {
+    background: white;
+    width: 40%;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+thead th {
+    font-size: 30px;
+    color: orange;
+}
+
+tbody label {
+    font-size: 20px;
+}
+
+tbody input {
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 90%;
+    height: 40px;
+    outline: none;
+}
+
+tr {
+    line-height: 60px;
+}
+
+tfoot button {
+    border: 1px solid crimson;
+    border-radius: 5px;
+    width: 95%;
+    height: 40px;
+    background-color: crimson;
+    color: white;
+    font-size: 20px;
+}
+
+.bottom span{
+    color: gray;
+}
+a {
+    text-decoration: none;
+    color: blue;
+}
+a:hover{
+    color: red;
+}

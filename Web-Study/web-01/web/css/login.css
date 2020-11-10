@@ -1,0 +1,64 @@
+/*添加背景图片*/
+body{
+    background: url("../img/bg.png");
+}
+
+/*中间表单样式*/
+.center{
+    background-color: white;    /*背景色*/
+    width: 40%;                 /*宽度*/
+    margin: auto;               /*外边距*/
+    margin-top: 100px;          /*上边距*/
+    border-radius: 15px;        /*弧度*/
+    text-align: center;         /*文本水平对齐*/
+}
+
+/*表头样式*/
+thead th{
+    font-size: 30px;    /*字体大小*/
+    color: orangered;   /*颜色*/
+}
+
+/*表体提示样式*/
+tbody label{
+    font-size: 20px;    /*字体大小*/
+}
+
+/*表体输入框样式*/
+tbody input{
+    border: 1px solid gray; /*边框*/
+    border-radius: 5px;     /*弧度*/
+    width: 90%;             /*宽度*/
+    height: 40px;           /*高度*/
+    outline: none;          /*取消轮廓*/
+}
+
+/*表底按钮样式*/
+tfoot button{
+    border: 1px solid crimson;  /*边框*/
+    border-radius: 5px;         /*弧度*/
+    width: 95%;                 /*宽度*/
+    height: 40px;               /*高度*/
+    background: crimson;        /*背景色*/
+    color: white;               /*文字颜色*/
+    font-size: 20px;            /*文字大小*/
+}
+
+/*表行样式*/
+tr{
+    line-height: 60px;  /*行高*/
+}
+
+/*底部页脚样式*/
+.footer{
+    width: 35%;         /*宽度*/
+    margin: auto;       /*外边距*/
+    font-size: 15px;    /*字体大小*/
+    color: gray;        /*颜色*/
+}
+
+/*超链接样式*/
+a{
+    text-decoration: none;  /*去除下划线*/
+    color: blue;            /*超链接文字颜色*/
+}

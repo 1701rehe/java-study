@@ -23,7 +23,7 @@ import java.io.IOException;
 public class AddStudentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//获取表单中的数据
+        //获取表单中的数据
         String username = req.getParameter("username");
         String age = req.getParameter("age");
         String grade = req.getParameter("grade");

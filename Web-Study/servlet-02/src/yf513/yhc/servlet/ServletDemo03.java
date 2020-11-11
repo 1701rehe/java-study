@@ -5,17 +5,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
  * @author CHY
- * @date 2020/11/5 21:10
+ * @date 2020/11/11 14:05
  */
-@WebServlet("/servlet01")
-public class ServletDemo01 extends HttpServlet {
+@WebServlet("/servlet03")
+public class ServletDemo03 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("正在执行....");
+        HttpSession session = req.getSession();
+        Object username = session.getAttribute("username");
+        System.out.println(username);
     }
 
     @Override

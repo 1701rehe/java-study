@@ -1,5 +1,6 @@
 package yf513.chy.dao;
 
+import yf513.chy.Utils.JDBCUtils;
 import yf513.chy.domain.Student;
 
 import java.sql.*;
@@ -11,24 +12,15 @@ import java.util.ArrayList;
  * @date 2020/11/12 11:25
  */
 public class StudentDAOImpl implements StudentDAO {
-    private static Connection con;
-
-    static {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://192.168.153.129:3306/db2", "root", "root");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
 
     @Override
     public ArrayList<Student> findAll() {
         ArrayList<Student> list = new ArrayList<>();
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+        Connection con=null;
         try {
+            con = JDBCUtils.getConnection();
             preparedStatement = con.prepareStatement("select * from student");
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -43,27 +35,7 @@ public class StudentDAOImpl implements StudentDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
+            JDBCUtils.close(con,preparedStatement,resultSet);
         }
         return list;
     }
@@ -73,7 +45,9 @@ public class StudentDAOImpl implements StudentDAO {
         Student stu = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
+        Connection con=null;
         try {
+            con=JDBCUtils.getConnection();
             preparedStatement = con.prepareStatement("select * from student where sid = ?");
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
@@ -87,27 +61,7 @@ public class StudentDAOImpl implements StudentDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
+            JDBCUtils.close(con,preparedStatement,resultSet);
         }
         return stu;
     }
@@ -115,8 +69,10 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public int insert(Student stu) {
         PreparedStatement preparedStatement = null;
+        Connection con =null;
         int result = 0;
         try {
+            con=JDBCUtils.getConnection();
             preparedStatement = con.prepareStatement("insert into student values (?,?,?,?)");
             preparedStatement.setInt(1, stu.getSid());
             preparedStatement.setString(2, stu.getName());
@@ -126,21 +82,7 @@ public class StudentDAOImpl implements StudentDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
-
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
+           JDBCUtils.close(con,preparedStatement,null);
         }
         return result;
     }
@@ -148,8 +90,10 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public int update(Student stu) {
         PreparedStatement preparedStatement = null;
+        Connection con=null;
         int result = 0;
         try {
+            con=JDBCUtils.getConnection();
             preparedStatement = con.prepareStatement("update student set birthday = ? where sid=?");
             preparedStatement.setDate(1, Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(stu.getBirthday())));
             preparedStatement.setInt(2,stu.getSid());
@@ -157,21 +101,7 @@ public class StudentDAOImpl implements StudentDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
-
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
+            JDBCUtils.close(con,preparedStatement,null);
         }
         return result;
     }
@@ -179,28 +109,17 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public int deleteById(Integer id) {
         PreparedStatement preparedStatement = null;
+        Connection con = null;
         int result = 0;
         try {
+            con = JDBCUtils.getConnection();
             preparedStatement = con.prepareStatement("delete from student where sid = ?");
             preparedStatement.setInt(1,id);
             result = preparedStatement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } finally {
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
-            if (con != null) {
-                try {
-                    con.close();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-            }
+            JDBCUtils.close(con,preparedStatement,null);
         }
         return result;
     }

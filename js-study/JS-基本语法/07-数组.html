@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //定义数组
+    let arr = [10,20,30];
+    //arr[3] = 40;  js中的数组长度可变
+    //遍历数组
+    for(let i = 0; i < arr.length; i++) {
+        document.write(arr[i] + "<br>");
+    }
+    document.write("==============<br>");
+
+    // 数组高级运算符 ...
+    //复制数组
+    let arr2 = [...arr];
+    //遍历数组
+    for(let i = 0; i < arr2.length; i++) {
+        document.write(arr2[i] + "<br>");
+    }
+    document.write("==============<br>");
+
+    //合并数组
+    let arr3 = [40,50,60];
+    let arr4 = [...arr2 , ...arr3];
+    //遍历数组
+    for(let i = 0; i < arr4.length; i++) {
+        document.write(arr4[i] + "<br>");
+    }
+    document.write("==============<br>");
+
+    //将字符串转成数组
+    let arr5 = [..."heima"];
+    //遍历数组
+    for(let i = 0; i < arr5.length; i++) {
+        document.write(arr5[i] + "<br>");
+    }
+</script>
+</html>

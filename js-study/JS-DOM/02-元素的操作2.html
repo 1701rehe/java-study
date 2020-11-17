@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素的增删改</title>
+</head>
+<body>
+    <select id="s">
+        <option>---请选择---</option>
+        <option>北京</option>
+        <option>上海</option>
+        <option>广州</option>
+    </select>
+</body>
+<script>
+    //1. createElement()   创建新的元素
+    let option = document.createElement("option");
+    //为option添加文本内容
+    option.innerText = "深圳";
+
+    //2. appendChild()     将子元素添加到父元素中
+    let select = document.getElementById("s");
+    select.appendChild(option);
+
+    //3. removeChild()     通过父元素删除子元素
+    //select.removeChild(option);
+
+    //4. replaceChild()    用新元素替换老元素
+    let option2 = document.createElement("option");
+    option2.innerText = "杭州";
+    select.replaceChild(option2,option);
+
+</script>
+</html>

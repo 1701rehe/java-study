@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性选择器</title>
+</head>
+<body>
+    <input type="text">
+    <input type="password">
+    <input type="password">
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //1.属性名选择器   $("元素[属性名]")
+    let in1 = $("input[type]");
+    //alert(in1.length);
+
+
+    //2.属性值选择器   $("元素[属性名=属性值]")
+    let in2 = $("input[type='password']");
+    alert(in2.length);
+
+</script>
+</html>

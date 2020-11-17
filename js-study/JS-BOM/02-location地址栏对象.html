@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location地址栏对象</title>
+    <style>
+        p{
+            text-align: center;
+        }
+        span{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        注册成功！<span id="time">5</span>秒之后自动跳转到首页...
+    </p>
+</body>
+<script>
+    //1.定义方法。改变秒数，跳转页面
+    let num = 5;
+    function showTime() {
+        num--;
+
+        if(num <= 0) {
+            //跳转首页
+            location.href = "index.html";
+        }
+
+        let span = document.getElementById("time");
+        span.innerHTML = num;
+    }
+
+    //2.设置循环定时器，每1秒钟执行showTime方法
+    setInterval("showTime()",1000);
+</script>
+</html>

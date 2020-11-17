@@ -1,5 +1,6 @@
 package yf513.chy.controller;
 
+import org.apache.ibatis.jdbc.SQL;
 import org.junit.Test;
 import yf513.chy.bean.Student;
 import yf513.chy.service.StudentService;
@@ -53,5 +54,13 @@ public class StudentController {
     public void delete() {
         Integer result = service.delete(7);
         System.out.println(result);
+    }
+
+    @Test
+    public void selectCondition(){
+        Student stu = new Student();
+        stu.setId(1);
+        Student student = service.selectCondition(stu);
+        System.out.println(student);
     }
 }

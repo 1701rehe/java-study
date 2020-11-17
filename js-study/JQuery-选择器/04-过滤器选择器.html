@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器选择器</title>
+</head>
+<body>
+    <div>div1</div>
+    <div id="div2">div2</div>
+    <div>div3</div>
+    <div>div4</div>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    // 1.首元素选择器	$("A:first");
+    let div1 = $("div:first");
+    //alert(div1.html());
+
+    // 2.尾元素选择器	$("A:last");
+    let div4 = $("div:last");
+    //alert(div4.html());
+
+    // 3.非元素选择器	$("A:not(B)");
+    let divs1 = $("div:not(#div2)");
+    //alert(divs1.length);
+
+    // 4.偶数选择器	    $("A:even");
+    let divs2 = $("div:even");
+    //alert(divs2.length);
+    //alert(divs2[0].innerHTML);
+    //alert(divs2[1].innerHTML);
+
+    // 5.奇数选择器	    $("A:odd");
+    let divs3 = $("div:odd");
+    //alert(divs3.length);
+    //alert(divs3[0].innerHTML);
+    //alert(divs3[1].innerHTML);
+
+    // 6.等于索引选择器	 $("A:eq(index)");
+    let div3 = $("div:eq(2)");
+    //alert(div3.html());
+
+    // 7.大于索引选择器	 $("A:gt(index)");
+    let divs4 = $("div:gt(1)");
+    //alert(divs4.length);
+    //alert(divs4[0].innerHTML);
+    //alert(divs4[1].innerHTML);
+
+    // 8.小于索引选择器	 $("A:lt(index)");
+    let divs5 = $("div:lt(2)");
+    alert(divs5.length);
+    alert(divs5[0].innerHTML);
+    alert(divs5[1].innerHTML);
+    
+</script>
+</html>

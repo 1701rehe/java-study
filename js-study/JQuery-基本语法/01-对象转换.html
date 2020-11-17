@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象转换</title>
+</head>
+<body>
+    <div id="div">我是div</div>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    // JS方式，通过id属性值获取div元素
+    let jsDiv = document.getElementById("div");
+    alert(jsDiv.innerHTML);
+    //alert(jsDiv.html());  JS对象无法使用jQuery里面的功能
+
+    // 将 JS 对象转换为jQuery对象
+    let jq = $(jsDiv);
+    alert(jq.html());
+
+    // jQuery方式，通过id属性值获取div元素
+    let jqDiv = $("#div");
+    alert(jqDiv.html());
+    // alert(jqDiv.innerHTML);   jQuery对象无法使用JS里面的功能
+
+    // 将 jQuery对象转换为JS对象
+    let js = jqDiv[0];
+    alert(js.innerHTML);
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //无参无返回值的方法
+    function println(){
+        document.write("hello js" + "<br>");
+    }
+    //调用方法
+    println();
+
+    //有参有返回值的方法
+    function getSum(num1,num2){
+        return num1 + num2;
+    }
+    //调用方法
+    let result = getSum(10,20);
+    document.write(result + "<br>");
+
+    //可变参数  对n个数字进行求和
+    function getSum(...params) {
+        let sum = 0;
+        for(let i = 0; i < params.length; i++) {
+            sum += params[i];
+        }
+        return sum;
+    }
+    //调用方法
+    let sum = getSum(10,20,30);
+    document.write(sum + "<br>");
+
+    //匿名函数
+    let fun = function(){
+        document.write("hello");
+    }
+    fun();
+</script>
+</html>

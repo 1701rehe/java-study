@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本选择器</title>
+</head>
+<body>
+    <div id="div1">div1</div>
+    <div class="cls">div2</div>
+    <div class="cls">div3</div>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //1.元素选择器   $("元素的名称")
+    let divs = $("div");
+    //alert(divs.length);
+
+    //2.id选择器    $("#id的属性值")
+    let div1 = $("#div1");
+    //alert(div1);
+
+    //3.类选择器     $(".class的属性值")
+    let cls = $(".cls");
+    alert(cls.length);
+
+</script>
+</html>

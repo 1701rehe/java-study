@@ -23,4 +23,7 @@ public interface StudentMapper {
 
     //删除数据
     public abstract Integer delete(Integer sid);
+
+    //多条件查询
+    public abstract Student selectCondition(Student stu);
 }

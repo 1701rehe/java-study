@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性的操作</title>
+    <style>
+        .aColor{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <a>点我呀</a>
+</body>
+<script>
+    //1. setAttribute()    添加属性
+    let a = document.getElementsByTagName("a")[0];
+    a.setAttribute("href","https://www.baidu.com");
+
+    //2. getAttribute()    获取属性
+    let value = a.getAttribute("href");
+    //alert(value);
+
+    //3. removeAttribute()  删除属性
+    //a.removeAttribute("href");
+
+    //4. style属性   添加样式
+    //a.style.color = "red";
+
+    //5. className属性   添加指定样式
+    a.className = "aColor";
+
+</script>
+</html>

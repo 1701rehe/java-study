@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量和常量</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //1.定义局部变量
+    let name = "张三";
+    let age = 23;
+    document.write(name + "," + age +"<br>");
+
+    //2.定义全局变量
+    {
+        let l1 = "aa";
+        l2 = "bb";
+    }
+    //document.write(l1);
+    document.write(l2 + "<br>");
+
+    //3.定义常量
+    const PI = 3.1415926;
+    //PI = 3.15;
+    document.write(PI);
+</script>
+</html>

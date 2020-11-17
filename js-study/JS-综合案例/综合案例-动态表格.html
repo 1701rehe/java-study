@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态表格</title>
+
+    <style>
+        table{
+            border: 1px solid;
+            margin: auto;
+            width: 500px;
+        }
+
+        td,th{
+            text-align: center;
+            border: 1px solid;
+        }
+        div{
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div>
+    <input type="text" id="name" placeholder="请输入姓名" autocomplete="off">
+    <input type="text" id="age"  placeholder="请输入年龄" autocomplete="off">
+    <input type="text" id="gender"  placeholder="请输入性别" autocomplete="off">
+    <input type="button" value="添加" id="add">
+</div>
+
+    <table id="tb">
+        <caption>学生信息表</caption>
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>操作</th>
+        </tr>
+
+        <tr>
+            <td>张三</td>
+            <td>23</td>
+            <td>男</td>
+            <td><a href="JavaScript:void(0);" onclick="drop(this)">删除</a></td>
+        </tr>
+
+        <tr>
+            <td>李四</td>
+            <td>24</td>
+            <td>男</td>
+            <td><a href="JavaScript:void(0);" onclick="drop(this)">删除</a></td>
+        </tr>
+
+    </table>
+
+</body>
+<script>
+    //一、添加功能
+    //1.为添加按钮绑定单击事件
+    document.getElementById("add").onclick = function(){
+        //2.创建行元素
+        let tr = document.createElement("tr");
+        //3.创建4个单元格元素
+        let nameTd = document.createElement("td");
+        let ageTd = document.createElement("td");
+        let genderTd = document.createElement("td");
+        let deleteTd = document.createElement("td");
+        //4.将td添加到tr中
+        tr.appendChild(nameTd);
+        tr.appendChild(ageTd);
+        tr.appendChild(genderTd);
+        tr.appendChild(deleteTd);
+        //5.获取输入框的文本信息
+        let name = document.getElementById("name").value;
+        let age = document.getElementById("age").value;
+        let gender = document.getElementById("gender").value;
+        //6.根据获取到的信息创建3个文本元素
+        let nameText = document.createTextNode(name);
+        let ageText = document.createTextNode(age);
+        let genderText = document.createTextNode(gender);
+        //7.将3个文本元素添加到td中
+        nameTd.appendChild(nameText);
+        ageTd.appendChild(ageText);
+        genderTd.appendChild(genderText);
+        //8.创建超链接元素和显示的文本以及添加href属性
+        let a = document.createElement("a");
+        let aText = document.createTextNode("删除");
+        a.setAttribute("href","JavaScript:void(0);");
+        a.setAttribute("onclick","drop(this)");
+        a.appendChild(aText);
+        //9.将超链接元素添加到td中
+        deleteTd.appendChild(a);
+        //10.获取table元素，将tr添加到table中
+        let table = document.getElementById("tb");
+        table.appendChild(tr);
+    }
+
+    //二、删除的功能
+    //1.为每个删除超链接标签添加单击事件的属性
+    //2.定义删除的方法
+    function drop(obj){
+        //3.获取table元素
+        let table = obj.parentElement.parentElement.parentElement;
+        //4.获取tr元素
+        let tr = obj.parentElement.parentElement;
+        //5.通过table删除tr
+        table.removeChild(tr);
+    }
+    
+    
+</script>
+</html>

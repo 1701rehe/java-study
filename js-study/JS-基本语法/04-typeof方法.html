@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>typeof方法</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let l1 = true;
+    document.write(typeof(l1) + "<br>");    // boolean
+
+    let l2 = null;
+    document.write(typeof(l2) + "<br>");    //    object  js原始的一个错误
+
+    let l3;
+    document.write(typeof(l3) + "<br>");    // undefined
+
+    let l4 = 10;
+    document.write(typeof(l4) + "<br>");    // number
+
+    let l5 = "hello";
+    document.write(typeof(l5) + "<br>");    // string
+
+    let l6 = 100n;
+    document.write(typeof(l6) + "<br>");    // bigint
+</script>
+</html>

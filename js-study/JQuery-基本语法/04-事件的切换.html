@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的切换</title>
+    <style>
+        #div{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="div">我是div</div>
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //方式一 单独定义
+    // $("#div").mouseover(function(){
+    //     //背景色：红色
+    //     //$("#div").css("background","red");
+    //     $(this).css("background","red");
+    // });
+    // $("#div").mouseout(function(){
+    //     //背景色：蓝色
+    //     //$("#div").css("background","blue");
+    //     $(this).css("background","blue");
+    // });
+
+    //方式二 链式定义
+    $("#div").mouseover(function(){
+        $(this).css("background","red");
+    }).mouseout(function(){
+        $(this).css("background","blue");
+    });
+</script>
+</html>

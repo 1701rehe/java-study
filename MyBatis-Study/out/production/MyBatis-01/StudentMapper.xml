@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--MyBatis的DTD约束-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    mapper：核心根标签
+    namespace属性：名称空间
+-->
+<mapper namespace="StudentMapper">
+    <!--
+        select：查询功能的标签
+        id属性：唯一标识
+        resultType属性：指定结果映射对象类型
+        parameterType属性：指定参数映射对象类型
+    -->
+    <select id="selectAll" resultType="yf513.chy.bean.Student">
+        SELECT *
+        FROM student
+    </select>
+
+    <select id="selectById" resultType="yf513.chy.bean.Student" parameterType="int">
+        SELECT *
+        FROM student
+        WHERE sid = #{sid}
+    </select>
+
+    <insert id="insert" parameterType="yf513.chy.bean.Student">
+        INSERT INTO student
+        VALUES (#{sid}, #{name}, #{age}, #{birthday})
+    </insert>
+
+    <update id="update" parameterType="yf513.chy.bean.Student">
+        UPDATE student
+        SET age = #{age}
+        WHERE sid = #{sid}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE
+        FROM student
+        WHERE sid = #{sid}
+    </delete>
+</mapper>

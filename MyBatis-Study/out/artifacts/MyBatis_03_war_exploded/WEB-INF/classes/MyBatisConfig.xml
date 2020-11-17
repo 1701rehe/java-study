@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--MyBatis的DTD约束-->
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!--configuration 核心根标签-->
+<configuration>
+
+    <!--引入数据库连接的配置文件-->
+    <properties resource="config.properties"/>
+
+    <!--配置LOG4J-->
+    <settings>
+        <setting name="logImpl" value="log4j"/>
+    </settings>
+
+    <!--起别名-->
+    <typeAliases>
+
+    </typeAliases>
+
+    <!--environments配置数据库环境，环境可以有多个。default属性指定使用的是哪个-->
+    <environments default="mysql">
+        <!--environment配置数据库环境  id属性唯一标识-->
+        <environment id="mysql">
+            <!-- transactionManager事务管理。  type属性，采用JDBC默认的事务-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- dataSource数据源信息   type属性 连接池-->
+            <dataSource type="POOLED">
+                <!-- property获取数据库连接的配置信息 -->
+                <property name="driver" value="${driver}" />
+                <property name="url" value="${url}" />
+                <property name="username" value="${username}" />
+                <property name="password" value="${password}" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- mappers引入映射配置文件 -->
+    <mappers>
+        <!-- mapper 引入指定的映射配置文件   resource属性指定映射配置文件的名称 -->
+        <mapper class="yf513.chy.dao.StudentDao"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件</title>
+</head>
+<body>
+    <img id="img" src="img/01.png"/>
+    <br>
+    <!-- <button id="up" onclick="up()">上一张</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="down" onclick="down()">下一张</button> -->
+    <button id="up">上一张</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button id="down">下一张</button>
+</body>
+<script>
+    //显示第一张图片的方法
+    function up(){
+        let img = document.getElementById("img");
+        img.setAttribute("src","img/01.png");
+    }
+
+    //显示第二张图片的方法
+    function down(){
+        let img = document.getElementById("img");
+        img.setAttribute("src","img/02.png");
+    }
+
+    //为上一张按钮绑定单击事件
+    let upBtn = document.getElementById("up");
+    upBtn.onclick = up;
+
+    //为下一张按钮绑定单击事件
+    let downBtn = document.getElementById("down");
+    downBtn.onclick = down;
+</script>
+</html>

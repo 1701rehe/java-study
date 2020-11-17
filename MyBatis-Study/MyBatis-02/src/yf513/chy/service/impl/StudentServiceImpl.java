@@ -80,4 +80,11 @@ public class StudentServiceImpl implements StudentService {
         close();
         return result;
     }
+
+    @Override
+    public Student selectCondition(Student stu) {
+        Student student = mapper.selectCondition(stu);
+        close();
+        return student;
+    }
 }

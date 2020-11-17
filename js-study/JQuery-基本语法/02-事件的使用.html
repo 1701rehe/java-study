@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的使用</title>
+</head>
+<body>
+    <input type="button" id="btn" value="点我">
+    <br>
+    <input type="text" id="input">
+</body>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script>
+    //单击事件
+    $("#btn").click(function(){
+        alert("点我干嘛?");
+    });
+
+    //获取焦点事件
+    // $("#input").focus(function(){
+    //     alert("你要输入数据啦...");
+    // });
+
+    //失去焦点事件
+    $("#input").blur(function(){
+        alert("你输入完成啦...");
+    });
+</script>
+</html>

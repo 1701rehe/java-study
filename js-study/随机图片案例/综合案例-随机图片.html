@@ -34,32 +34,43 @@
         "img/09.jpg",
         "img/10.jpg"];
 		
-    //2.定义计数器
-    
+    //2.定义计数器变量
+    let count = 0;
     //3.定义定时器对象
-    
+    let time =null;
     //4.定义图片路径变量
-    
+    let imgSrc="";
     //5.为开始按钮绑定单击事件
+    $("#startBtn").click(function(){
+        //6.设置按钮状态
+        $("#startBtn").prop("disabled",true);
+        $("#stopBtn").prop("disabled",false);
+        //7.设置定时器，循环显示图片
+        time=setInterval(function(){
+            //8.循环获取图片路径
+           let index = count % imgs.length;
+
+            //9.将当前图片显示到小图片上
+           imgSrc=imgs[index];
+           $("#small").prop("src",imgSrc);
+            //10.计数器自增
+            count++;
+        })
+        
+    })
     
-    //6.设置按钮状态
-        
-    //7.设置定时器，循环显示图片
-        
-    //8.循环获取图片路径
-           
-    //9.将当前图片显示到小图片上
-           
-    //10.计数器自增
      
 
     //11.为停止按钮绑定单击事件
-    
-    //12.取消定时器
-        
+    $("#stopBtn").click(function(){
+        //12.取消定时器
+        clearInterval(time);
     //13.设置按钮状态
-        
+    $("#startBtn").prop("disabled",false);
+    $("#stopBtn").prop("disabled",true);
     //14.将图片显示到大图片上
-     
+    $("#big").prop("src",imgSrc);
+    $("#big").prop("style","width: 400px; height: 400px;");
+    })
 </script>
 </html>

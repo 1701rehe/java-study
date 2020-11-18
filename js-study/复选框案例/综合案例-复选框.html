@@ -51,6 +51,20 @@
 </body>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script>
+    $("#selectAll").click(function(){
+        $(".item").prop("checked",true);
+    });
 
+    $("#selectNone").click(function(){
+        $(".item").prop("checked",false);
+    });
+
+    $("#reverse").click(function(){
+        let items = $(".item");
+        items.each(function(){
+            //获取到原单选框checked的值，然后修改
+            $(this).prop("checked",!$(this).prop("checked"));
+        });
+    });
 </script>
 </html>

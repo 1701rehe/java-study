@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+</head>
+<body>
+<form autocomplete="off">
+    姓名：<input type="text" id="username">
+    <span id="uSpan"></span>
+    <br/>
+    密码：<input type="password" id="password">
+    <br/>
+    <input type="submit" value="注册">
+</form>
+</body>
+<script>
+<!--原生js实现AJAX-->
+    document.getElementById("username").onblur=function () {
+        //核心对象
+        let xmlHttp = new XMLHttpRequest();
+        let username = document.getElementById("username").value;
+        xmlHttp.open("GET","userServlet?username="+username,true);
+        //发送请求
+        xmlHttp.send();
+        //处理响应
+        xmlHttp.onreadystatechange=function () {
+            if(xmlHttp.readyState==4&&xmlHttp.status==200){
+                //将响应数据显示到span标签中
+                document.getElementById("uSpan").innerHTML = xmlHttp.responseText;
+            }
+        }
+    }
+</script>
+</html>

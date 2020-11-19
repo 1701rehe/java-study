@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网站首页</title>
+    <link rel="stylesheet" href="css/tt.css">
+</head>
+<body>
+<div class="top">
+    <span class="top-left">下载APP</span>
+    <span class="top-left"> 北京         晴天</span>
+    <span class="top-right">更多产品</span>
+</div>
+
+<div class="container">
+
+    <div class="left">
+        <a>
+            <img src="img/logo.png"><br/>
+        </a>
+
+        <ul>
+            <li>
+                <a class="channel-item active" href="#">
+                    <span>
+                        推荐
+                    </span>
+                </a>
+            </li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    视频
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    热点
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    直播
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    图片
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    娱乐
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    游戏
+                </span>
+            </a></li>
+
+            <li><a class="channel-item" href="#">
+                <span>
+                    体育
+                </span>
+            </a></li>
+
+        </ul>
+
+    </div>
+    <div class="center">
+        <ul class="news_list">
+            <li>
+                <div class="title-box">
+                    <a href="#" class="link">
+                        奥巴马罕见介入美国2020大选，警告民主党参选人须“基于现实11”
+                        <hr>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="title-box">
+                    <a href="#" class="link">
+                        奥巴马罕见介入美国2020大选，警告民主党参选人须“基于现实22”
+                        <hr>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="title-box">
+                    <a href="#" class="link">
+                        奥巴马罕见介入美国2020大选，警告民主党参选人须“基于现实33”
+                        <hr>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="title-box">
+                    <a href="#" class="link">
+                        奥巴马罕见介入美国2020大选，警告民主党参选人须“基于现实44”
+                        <hr>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="title-box">
+                    <a href="#" class="link">
+                        奥巴马罕见介入美国2020大选，警告民主党参选人须“基于现实55”
+                        <hr>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="title-box">
+                    <a href="#" class="link">
+                        奥巴马罕见介入美国2020大选，警告民主党参选人须“基于现实66”
+                        <hr>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="title-box">
+                    <a href="#" class="link">
+                        奥巴马罕见介入美国2020大选，警告民主党参选人须“基于现实77”
+                        <hr>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="title-box">
+                    <a href="#" class="link">
+                        奥巴马罕见介入美国2020大选，警告民主党参选人须“基于现实88”
+                        <hr>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="title-box">
+                    <a href="#" class="link">
+                        奥巴马罕见介入美国2020大选，警告民主党参选人须“基于现实99”
+                        <hr>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="title-box">
+                    <a href="#" class="link">
+                        奥巴马罕见介入美国2020大选，警告民主党参选人须“基于现实1010”
+                        <hr>
+                    </a>
+                </div>
+            </li>
+        </ul>
+
+        <div class="loading" style="text-align: center; height: 80px">
+            <img src="img/loading2.gif" height="100%">
+        </div>
+
+        <div class="content">
+            <div class="pagination-holder clearfix">
+                <div id="light-pagination" class="pagination"></div>
+            </div>
+        </div>
+
+        <div id="no" style="text-align: center;color: red;font-size: 20px"></div>
+    </div>
+</div>
+</body>
+<script src="js/jquery-3.3.1.js"></script>
+<script>
+    //1.定义发送请求标记
+    let send = true;
+
+    //2.定义当前页码和每页显示的条数
+    let start = 1;
+    let pageSize = 10;
+
+    //3.定义滚动条距底部的距离
+    let bottom = 1;
+
+    //4.设置页面加载事件
+    $(function () {
+        //5.为当前窗口绑定滚动条滚动事件
+        $(window).scroll(function () {
+            //6.获取必要信息，用于计算当前展示数据是否浏览完毕
+            //当前窗口的高度
+            let windowHeight = $(window).height();
+
+            //滚动条从上到下滚动距离
+            let scrollTop = $(window).scrollTop();
+
+            //当前文档的高度
+            let docHeight = $(document).height();
+
+            //7.计算当前展示数据是否浏览完毕
+            //当 滚动条距底部的距离 + 当前滚动条滚动的距离 + 当前窗口的高度 >= 当前文档的高度
+            if((bottom + scrollTop + windowHeight) >= docHeight) {
+                //8.判断请求标记是否为true
+                if(send == true) {
+                    //9.将请求标记置为false，当前异步操作完成前，不能重新发起请求。
+                    send = false;
+                    //10.根据当前页和每页显示的条数来 请求查询分页数据
+                    queryByPage(start,pageSize);
+                    //11.当前页码+1
+                    start++;
+                }
+            }
+        });
+    });
+
+    //定义查询分页数据的函数
+    function queryByPage(start,pageSize){
+        //加载动图显示
+        $(".loading").show();
+        //发起AJAX请求
+        $.ajax({
+            //请求的资源路径
+            url:"newsServlet",
+            //请求的参数
+            data:{"start":start,"pageSize":pageSize},
+            //请求的方式
+            type:"POST",
+            //响应数据形式
+            dataType:"json",
+            //请求成功后的回调函数
+            success:function (data) {
+                if(data.length == 0) {
+                    $(".loading").hide();
+                    $("#no").html("我也是有底线的...");
+                    return;
+                }
+                //加载动图隐藏
+                $(".loading").hide();
+                //将数据显示
+                let titles = "";
+                for(let i = 0; i < data.length; i++) {
+                    titles += "<li>\n" +
+                        "                <div class=\"title-box\">\n" +
+                        "                    <a href=\"#\" class=\"link\">\n" +
+                        data[i].title +
+                        "                        <hr>\n" +
+                        "                    </a>\n" +
+                        "                </div>\n" +
+                        "            </li>";
+                }
+
+                //显示到页面
+                $(".news_list").append(titles);
+                //将请求标记设置为true
+                send = true;
+            }
+        });
+    }
+
+</script>
+</html>

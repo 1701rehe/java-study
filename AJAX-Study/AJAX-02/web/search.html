@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户搜索</title>
+    <style type="text/css">
+        .content {
+            width: 643px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        input[type='text'] {
+            width: 530px;
+            height: 40px;
+            font-size: 14px;
+        }
+
+        input[type='button'] {
+            width: 100px;
+            height: 46px;
+            background: #38f;
+            border: 0;
+            color: #fff;
+            font-size: 15px
+        }
+
+        .show {
+            position: absolute;
+            width: 535px;
+            height: 100px;
+            border: 1px solid #999;
+            border-top: 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<form autocomplete="off">
+    <div class="content">
+        <img src="img/logo.jpg">
+        <br/><br/>
+        <input type="text" id="username">
+        <input type="button" value="搜索一下">
+        <div id="show" class="show"></div>
+    </div>
+</form>
+</body>
+<script src="js/jquery-3.3.1.js"></script>
+<script>
+
+    $("#username").mousedown(function () {
+        let username = $("#username").val();
+        if (username == null || username === "") {
+            $("#show").hide();
+            return;
+        }
+
+        $.ajax({
+            //请求资源路径
+            url: "userServlet",
+            data: {"username": username},
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                //将响应的数据进行处理
+                let names = "";
+                for (let i = 0; i < data.length; i++) {
+                    names += "<div>" + data[i].name + "</div>";
+                }
+                $("#show").html(names);
+                $("#show").show();
+            }
+        })
+    })
+</script>
+</html>

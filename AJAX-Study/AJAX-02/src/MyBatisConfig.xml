@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--configuration：核心根标签-->
+<configuration>
+
+    <!--引入数据库连接信息配置文件-->
+    <properties resource="config.properties"/>
+
+    <!--集成LOG4J日志信息-->
+    <settings>
+        <setting name="logImpl" value="log4j"/>
+    </settings>
+
+    <!--配置数据库环境，可以有多个。default指定默认使用哪个-->
+    <environments default="mysql">
+        <!--配置环境，id是唯一标识-->
+        <environment id="mysql">
+            <!--事务管理 采用JDBC默认的事务-->
+            <transactionManager type="JDBC" />
+            <!--数据源：连接池-->
+            <dataSource type="POOLED">
+                <!--获取数据库连接相关配置-->
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--配置映射关系-->
+    <mappers>
+        <!--接口所在的包-->
+        <package name="yf513.chy.mapper"/>
+    </mappers>
+
+</configuration>

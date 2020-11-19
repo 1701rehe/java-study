@@ -229,7 +229,7 @@
             dataType:"json",
             //请求成功后的回调函数
             success:function (data) {
-                if(data.length == 0) {
+                if(data.length === 0) {
                     $(".loading").hide();
                     $("#no").html("我也是有底线的...");
                     return;

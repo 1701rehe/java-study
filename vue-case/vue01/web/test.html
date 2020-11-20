@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>异步操作</title>
+    <script src="js/vue.js"></script>
+    <script src="js/axios-0.18.0.js"></script>
+</head>
+<body>
+<div id="div">
+    {{name}}
+    <button @click="send()">发起请求</button>
+</div>
+</body>
+<script>
+    new Vue({
+        el: "#div",
+        data: {
+            name: "张三"
+        },
+        methods: {
+            send() {
+                //GET方式
+                // axios.get("testServlet?name="+this.name)
+                // .then(resp=>{
+                //     alert(resp.data);
+                // })
+                // .catch(error=>{
+                //     alert(error);
+                // })
+                //POST方式
+                axios.post("testServlet", "name=" + this.name)
+                    .then(resp => {
+                        alert(resp.data);
+                    })
+                    .catch(error => {
+                        alert(error);
+                    })
+            }
+        }
+    });
+</script>
+</html>

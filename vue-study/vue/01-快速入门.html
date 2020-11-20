@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快速入门</title>
+</head>
+<body>
+    <!-- 视图 -->
+    <div id="div">
+        {{msg}}
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    // 脚本
+    new Vue({
+        el:"#div",
+        data:{
+            msg:"Hello Vue"
+        }
+    });
+</script>
+</html>

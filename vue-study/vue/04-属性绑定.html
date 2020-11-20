@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性绑定</title>
+</head>
+<body>
+    <!-- 视图 -->
+    <div id="div">
+        <a v-bind:href="url">百度一下</a>
+        <br>
+        <a :href="url">百度一下</a>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    // 脚本
+    new Vue({
+        el:"#div",
+        data:{
+            url:"https://www.baidu.com"
+        }
+    });
+</script>
+</html>

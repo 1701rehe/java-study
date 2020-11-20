@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性绑定</title>
+</head>
+<body>
+     <!-- 视图 -->
+     <div id="div">
+        <div>{{name}}</div>
+        <button v-on:click = "change()">v-on改变div的内容</button>
+        <button @click = "change()">@改变div的内容</button>
+     </div>
+ </body>
+ <script src="js/vue.js"></script>
+ <script>
+     // 脚本
+     new Vue({
+         el:"#div",
+         data:{
+             name:"北方民族大学"
+         },
+         methods:{
+             change(){
+                 if(this.name=="重庆邮电大学"){
+                    this.name="北方民族大学";
+                 }else{
+                    this.name="重庆邮电大学";
+                 }
+               
+            }
+        }
+     });
+ </script>
+</html>

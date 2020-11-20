@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性绑定</title>
+</head>
+<body>
+     <!-- 视图 -->
+     <div id="div">
+        <form autocomplete="off">
+            姓名：<input type="text" name="username" v-model="username">
+            <br>
+            年龄：<input type="number" name="age" v-model="age">
+        </form>
+     </div>
+ </body>
+ <script src="js/vue.js"></script>
+ <script>
+     // 脚本
+     new Vue({
+         el:"#div",
+         data:{
+            username:"张",
+            age:23
+         }
+     });
+ </script>
+</html>

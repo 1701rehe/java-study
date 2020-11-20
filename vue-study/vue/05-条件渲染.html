@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性绑定</title>
+</head>
+<body>
+    <!-- 视图 -->
+    <div id="div">
+        <div v-if="num%3==0">div1</div>
+        <div v-else-if="num%3==1">div2</div>
+        <div v-else="num%3==2">div3</div>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    // 脚本
+    new Vue({
+        el:"#div",
+        data:{
+            num:1
+        }
+    });
+</script>
+</html>

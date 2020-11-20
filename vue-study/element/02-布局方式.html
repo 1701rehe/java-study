@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>element入门</title>
+    <link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+    <script src="js/vue.js"></script>
+    <script src="element-ui/lib/index.js"></script>
+    <style>
+        .el-row{
+            margin-bottom:20px;
+        }
+        .bg-purple-dark{
+            background: red;
+        }
+        .bg-purple{
+            background: blue;
+        }
+        .bg-purple-light{
+            background: green;
+        }
+        .grid-content{
+            border-radius:4px;
+            min-height: 36px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div">
+        <el-row>
+            <el-col :span="24"><div class="grid-content bg-purple-dark"></div></el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
+            <el-col :span="12"><div class="grid-content bg-purple-light"></div></el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="8"><div class="grid-content bg-purple"></div></el-col>
+            <el-col :span="8"><div class="grid-content bg-purple-light"></div></el-col>
+            <el-col :span="8"><div class="grid-content bg-purple"></div></el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
+            <el-col :span="6"><div class="grid-content bg-purple-light"></div></el-col>
+            <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>
+            <el-col :span="6"><div class="grid-content bg-purple-light"></div></el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
+            <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
+            <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
+            <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
+            <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
+            <el-col :span="4"><div class="grid-content bg-purple-light"></div></el-col>
+          </el-row>
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el:"#div"
+    })
+</script>
+</html>

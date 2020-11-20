@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本插值</title>
+</head>
+<body>
+    <!-- 视图 -->
+    <div id="div">
+        <div>{{msg}}</div>
+        <div v-html="msg"></div>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    // 脚本
+    new Vue({
+        el:"#div",
+        data:{
+            msg:"<b>hello vue</b>"
+        }
+    });
+</script>
+</html>

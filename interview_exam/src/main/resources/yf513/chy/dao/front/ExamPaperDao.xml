@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yf513.chy.dao.front.ExamPaperDao">
+    <insert id="save" parameterType="yf513.chy.domain.front.ExamPaper">
+        insert into tr_examination_paper (id, member_id, state, apply_time)
+        values (#{id,jdbcType=VARCHAR}, #{memberId,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR},
+                #{applyTime,jdbcType=TIMESTAMP})
+    </insert>
+</mapper>

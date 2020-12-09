@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yf513.chy.dao.store.QuestionDao">
+    <!--配置实体类属性和数据库表中列的对应关系-->
+    <resultMap id="BaseResultMap" type="yf513.chy.domain.store.Question">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="subject" jdbcType="VARCHAR" property="subject"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <collection
+                property="questionItemList"
+                javaType="java.util.List"
+                column="id"
+                ofType="yf513.chy.domain.store.QuestionItem"
+                select="yf513.chy.dao.store.QuestionItemDao.findByQuestionId"/>
+    </resultMap>
+
+    <!--配置查询的列名公共SQL语句-->
+    <sql id="Base_Column_List">
+        id, subject,type
+    </sql>
+
+    <!--配置查询所有-->
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from st_question
+        limit 2
+    </select>
+</mapper>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yf513.chy.dao.system.RoleDao">
+
+    <resultMap id="BaseResultMap" type="yf513.chy.domain.system.Role">
+        <id column="role_id" jdbcType="VARCHAR" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        role_id,name,remark,create_time
+    </sql>
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ss_role
+    </select>
+
+    <select id="findById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ss_role
+        where role_id =#{id}
+    </select>
+
+    <select id="findAllRoleByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        role_id,
+        name,
+        CASE
+        WHEN role_id IN (SELECT role_id FROM ss_role_user WHERE user_id = #{'userId'})
+        THEN 'checked'
+        ELSE ''
+        END
+        AS remark
+        FROM
+        ss_role
+    </select>
+
+    <!--配置全字段插入，当某个字段没有值时，插入null-->
+    <insert id="save" parameterType="yf513.chy.domain.system.Role">
+        insert into ss_role (role_id, name, remark, create_time)
+        values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},
+        #{createTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <!--配置根据id删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete from ss_role
+        where role_id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <!--配置全字段更新，当提供的数据为null时，数据库数据会被更新为null-->
+    <update id="update" parameterType="yf513.chy.domain.system.Role">
+        update ss_role
+        set name = #{name,jdbcType=VARCHAR},
+        remark = #{remark,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=TIMESTAMP}
+        where role_id = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <insert id="saveRoleModule">
+        insert into ss_role_module (role_id, module_id)
+        values (#{roleId,jdbcType=VARCHAR}, #{moduleId,jdbcType=VARCHAR})
+    </insert>
+
+    <!--配置根据id删除-->
+    <delete id="deleteRoleModule" parameterType="java.lang.String">
+        delete from ss_role_module
+        where role_id = #{roleId,jdbcType=VARCHAR}
+    </delete>
+
+</mapper>

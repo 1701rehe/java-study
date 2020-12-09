@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yf513.chy.dao.system.UserDao">
+    <!--配置实体类属性和数据库表中列的对应关系-->
+    <resultMap id="BaseResultMap" type="yf513.chy.domain.system.User">
+        <id column="user_id" jdbcType="VARCHAR" property="id"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="state" jdbcType="INTEGER" property="state"/>
+        <result column="station" jdbcType="VARCHAR" property="station"/>
+        <result column="gender" jdbcType="VARCHAR" property="gender"/>
+        <result column="telephone" jdbcType="VARCHAR" property="telephone"/>
+        <result column="birthday" jdbcType="VARCHAR" property="birthday"/>
+        <result column="join_date" jdbcType="VARCHAR" property="joinDate"/>
+        <result column="dept_id" jdbcType="VARCHAR" property="deptId"/>
+        <association property="dept"
+                     column="dept_id"
+                     javaType="yf513.chy.domain.system.Dept"
+                     select="yf513.chy.dao.system.DeptDao.findById"/>
+    </resultMap>
+
+    <!--配置查询的列名公共SQL语句-->
+    <sql id="Base_Column_List">
+        user_id, email, user_name, password, station,state, gender, telephone, birthday, join_date, dept_id
+    </sql>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ss_user
+    </select>
+
+    <select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ss_user
+        where user_id=#{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--配置根据id删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete
+        from ss_user
+        where user_id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <!--配置全字段插入，当某个字段没有值时，插入null-->
+    <insert id="save" parameterType="yf513.chy.domain.system.User">
+        insert into ss_user (user_id, email, user_name, station, password, state,
+        gender, telephone, birthday, join_date, dept_id)
+        values (#{id,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},
+        #{station,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{state,jdbcType=DECIMAL},
+        #{gender,jdbcType=CHAR}, #{telephone,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR},
+        #{joinDate,jdbcType=VARCHAR}, #{deptId,jdbcType=VARCHAR})
+    </insert>
+
+    <!--配置根据roleId删除关系表数据-->
+    <delete id="deleteRole" parameterType="java.lang.String">
+        delete from ss_role_user
+        where user_id = #{userId,jdbcType=VARCHAR}
+    </delete>
+
+    <!--配置全字段插入，当某个字段没有值时，插入null-->
+    <insert id="updateRole" parameterType="map">
+        insert into ss_role_user (role_id, user_id)
+        values (#{roleId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR})
+    </insert>
+
+    <update id="update" parameterType="yf513.chy.domain.system.User">
+        update ss_user
+        set user_name = #{userName,jdbcType=VARCHAR},
+        station = #{station,jdbcType=VARCHAR},
+        state = #{state,jdbcType=DECIMAL},
+        telephone = #{telephone,jdbcType=VARCHAR},
+        dept_id = #{deptId,jdbcType=VARCHAR}
+        where user_id = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <select id="findByEmailAndPwd" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ss_user
+        where email=#{email,jdbcType=VARCHAR} and password=#{password,jdbcType=VARCHAR}
+    </select>
+</mapper>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yf513.chy.dao.front.ExamQuestionDao">
+    <insert id="save" parameterType="yf513.chy.domain.front.ExamQuestion">
+        insert into tr_member_question (id, question_id, examinationpaper_id, answer_result)
+        values (#{id,jdbcType=VARCHAR}, #{questionId,jdbcType=VARCHAR}, #{examPaperId,jdbcType=VARCHAR},#{answer,jdbcType=VARCHAR})
+    </insert>
+</mapper>

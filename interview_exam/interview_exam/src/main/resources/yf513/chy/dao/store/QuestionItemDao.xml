@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yf513.chy.dao.store.QuestionItemDao">
+    <!--配置实体类属性和数据库表中列的对应关系-->
+    <resultMap id="BaseResultMap" type="yf513.chy.domain.store.QuestionItem">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="question_id" jdbcType="VARCHAR" property="questionId"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="is_right" jdbcType="VARCHAR" property="isRight"/>
+    </resultMap>
+
+    <!--配置查询的列名公共SQL语句-->
+    <sql id="Base_Column_List">
+        id, question_id, content, is_right
+    </sql>
+
+    <!--配置查询所有，带条件-->
+    <select id="findAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from st_question_item
+        where question_id = #{questionId,jdbcType=VARCHAR}
+    </select>
+
+    <!--配置根据ID查询-->
+    <select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from st_question_item
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--根据题目id查询所有选项-->
+    <select id="findByQuestionId" resultMap="BaseResultMap" parameterType="string">
+        select
+        <include refid="Base_Column_List"/>
+        from st_question_item
+        where question_id = #{questionId}
+    </select>
+</mapper>

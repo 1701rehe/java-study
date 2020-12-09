@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yf513.chy.dao.system.DeptDao">
+
+    <resultMap id="BaseResultMap" type="yf513.chy.domain.system.Dept">
+        <id column="dept_id" property="id" jdbcType="VARCHAR"/>
+        <result column="dept_name" property="deptName" jdbcType="VARCHAR"/>
+        <result column="parent_id" property="parentId" jdbcType="VARCHAR"/>
+        <result column="state" property="state" jdbcType="INTEGER"/>
+        <association
+                property="parent"
+                javaType="yf513.chy.domain.system.Dept"
+                column="parent_id"
+                select="yf513.chy.dao.system.DeptDao.findById"
+        />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        dept_id,dept_name,parent_id,state
+    </sql>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ss_dept
+    </select>
+
+    <select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ss_dept
+        where dept_id=#{id,jdbcType=VARCHAR}
+    </select>
+
+    <update id="update" parameterType="yf513.chy.domain.system.Dept">
+        update ss_dept
+        set dept_name = #{deptName,jdbcType=VARCHAR},
+            parent_id = #{parentId,jdbcType=VARCHAR},
+            state     = #{state,jdbcType=INTEGER}
+        where dept_id = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <insert id="save" parameterType="yf513.chy.domain.system.Dept">
+        insert into ss_dept (dept_id, dept_name, parent_id, state)
+        values (#{id,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR},
+                #{state,jdbcType=DECIMAL})
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.String">
+        delete
+        from ss_dept
+        where dept_id = #{id,jdbcType=VARCHAR}
+    </delete>
+</mapper>

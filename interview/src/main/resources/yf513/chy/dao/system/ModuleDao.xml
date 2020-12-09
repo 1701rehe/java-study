@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yf513.chy.dao.system.ModuleDao">
+    <!--配置实体类属性和数据库表中列的对应关系-->
+    <resultMap id="BaseResultMap" type="yf513.chy.domain.system.Module">
+        <id column="module_id" jdbcType="VARCHAR" property="id"/>
+        <result column="parent_id" jdbcType="VARCHAR" property="parentId"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="ctype" jdbcType="DECIMAL" property="ctype"/>
+        <result column="state" jdbcType="INTEGER" property="state"/>
+        <result column="curl" jdbcType="VARCHAR" property="curl"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <association
+                property="module"
+                javaType="yf513.chy.domain.system.Module"
+                column="parent_id"
+                select="yf513.chy.dao.system.ModuleDao.findById"
+        />
+    </resultMap>
+
+    <!--配置查询的列名公共SQL语句-->
+    <sql id="Base_Column_List">
+        module_id, parent_id, name, ctype, state, curl, remark
+    </sql>
+
+    <!--配置查询所有，带条件-->
+    <select id="findAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ss_module
+    </select>
+
+    <!--配置根据ID查询-->
+    <select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ss_module
+        where module_id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--配置根据id删除-->
+    <delete id="delete" parameterType="java.lang.String">
+        delete
+        from ss_module
+        where module_id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <!--配置全字段插入，当某个字段没有值时，插入null-->
+
+
+    <insert id="save" parameterType="yf513.chy.domain.system.Module">
+        insert into ss_module (module_id, parent_id, name, ctype, state, curl, remark)
+        values (#{id,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR},
+                #{name,jdbcType=VARCHAR}, #{ctype,jdbcType=DECIMAL}, #{state,jdbcType=DECIMAL},
+                #{curl,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+    </insert>
+
+    <!--配置全字段更新，当提供的数据为null时，数据库数据会被更新为null-->
+    <update id="update" parameterType="yf513.chy.domain.system.Module">
+        update ss_module
+        set parent_id = #{parentId,jdbcType=VARCHAR},
+            name      = #{name,jdbcType=VARCHAR},
+            ctype     = #{ctype,jdbcType=DECIMAL},
+            state     = #{state,jdbcType=DECIMAL},
+            curl      = #{curl,jdbcType=VARCHAR},
+            remark    = #{remark,jdbcType=VARCHAR}
+        where module_id = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!--配置根据ID查询-->
+    <select id="findAuthorDataByRoleId" parameterType="java.lang.String" resultType="java.util.Map">
+        select module_id as id,
+               parent_id as pId,
+               name      as name,
+               case
+                   when module_id in (select module_id from ss_role_module where role_id = #{roleId})
+                       then 'true'
+                   else 'false'
+                   end
+                         as checked
+        from ss_module
+    </select>
+
+    <select id="findModuleByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select distinct
+                        m.module_id,
+                        m.parent_id,
+                        m.name,
+                        m.ctype,
+                        m.state,
+                        m.curl,
+                        m.remark
+        from ss_module as m,
+             ss_role_module as rm,
+             ss_role_user as ru
+        where m.module_id = rm.module_id
+          and rm.role_id = ru.role_id
+          and ru.user_id = #{uid,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

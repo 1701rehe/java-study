@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单选框</title>
+    <script src="js/vue.js"></script>
+    <script src="../element/element-ui/lib/index.js"></script>
+</head>
+<body>
+<!-- 视图 -->
+<div id="app">
+    <template>
+        <el-radio-group v-model="radio">
+            <el-radio :label="3">备选项</el-radio>
+            <el-radio :label="6">备选项</el-radio>
+            <el-radio :label="9">备选项</el-radio>
+        </el-radio-group>
+    </template>
+</div>
+</body>
+<script>
+    // 脚本
+    var Main = {
+        data () {
+            return {
+                radio: 6
+            };
+        }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')
+</script>
+</html>

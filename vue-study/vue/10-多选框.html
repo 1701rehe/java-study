@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多选框</title>
+    <script src="js/vue.js"></script>
+    <script src="../element/element-ui/lib/index.js"></script>
+</head>
+<body>
+<!-- 视图 -->
+<div id="app">
+    <template>
+        <el-checkbox-group v-model="checkList">
+            <el-checkbox label="复选框 A" @change="changeResultCheckBox()"></el-checkbox>
+            <el-checkbox label="复选框 B" @change="changeResultCheckBox()"></el-checkbox>
+            <el-checkbox label="复选框 C" @change="changeResultCheckBox()"></el-checkbox>
+            <el-checkbox label="禁用" disabled></el-checkbox>
+            <el-checkbox label="选中且禁用" disabled></el-checkbox>
+        </el-checkbox-group>
+    </template>
+</div>
+</body>
+<script>
+    // 脚本
+    new Vue({
+        el: '#app',
+        data: {
+            checkList: [],
+        },
+        methods: {
+            changeResultCheckBox() {
+                alert(this.checkList);
+                alert(this.checked);
+            }
+        }
+    });
+</script>
+</html>

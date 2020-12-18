@@ -1,0 +1,16 @@
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:15:46:25 +0800] "GET /user/1 HTTP/1.1" 200 - http-bio-80-exec-2 1752
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:15:57:03 +0800] "GET /user?userName=chy&password=1234&realName=hongYu&gender=1&birthday=1995/03/21 HTTP/1.1" 405 1045 http-bio-80-exec-2 1243
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:15:58:32 +0800] "POST /user?userName=chy&password=1234&realName=hongYu&gender=1&birthday=1995/03/21 HTTP/1.1" 200 14 http-bio-80-exec-5 89
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:15:59:01 +0800] "PUT /user?userName=chy&password=1234&realName=hongYu&gender=1&birthday=1995/03/21 HTTP/1.1" 200 14 http-bio-80-exec-6 2
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:15:59:31 +0800] "DELETE /user/4 HTTP/1.1" 200 14 http-bio-80-exec-7 4
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:16:00:17 +0800] "GET /user/1/2 HTTP/1.1" 200 - http-bio-80-exec-8 22
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:16:01:01 +0800] "POST /user/login?userName=chy&password=1234 HTTP/1.1" 200 - http-bio-80-exec-9 2
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:16:21:21 +0800] "GET /user/1 HTTP/1.1" 500 5950 http-bio-80-exec-2 1277
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:16:22:20 +0800] "GET /user/1 HTTP/1.1" 200 110 http-bio-80-exec-2 1097
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:16:22:29 +0800] "GET /user/1/2 HTTP/1.1" 200 522 http-bio-80-exec-3 91
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:16:22:38 +0800] "GET /user/1/4 HTTP/1.1" 200 722 http-bio-80-exec-4 7
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:16:22:56 +0800] "POST /user/login?userName=chy&password=1234 HTTP/1.1" 200 111 http-bio-80-exec-5 27
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:16:23:11 +0800] "POST /user?userName=ch1y&password=1234&realName=hongYu&gender=1&birthday=1995/03/21 HTTP/1.1" 200 14 http-bio-80-exec-6 55
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:16:23:17 +0800] "DELETE /user/4 HTTP/1.1" 200 14 http-bio-80-exec-7 69
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:16:23:35 +0800] "PUT /user?userName=ch1y&password=12344&realName=hongYu&gender=1&birthday=1995/03/21 HTTP/1.1" 200 15 http-bio-80-exec-8 29
+0:0:0:0:0:0:0:1 - - [17/Dec/2020:16:23:52 +0800] "PUT /user?userName=ch1y&password=12344&realName=hongYu&gender=1&birthday=1995/03/21&uuid=6 HTTP/1.1" 200 14 http-bio-80-exec-9 49

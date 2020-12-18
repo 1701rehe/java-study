@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="yf513.chy">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <mvc:annotation-driven/>
+
+    <mvc:default-servlet-handler/>
+    <!--开启拦截器使用-->
+    <mvc:interceptors>
+        <!--开启具体的拦截器的使用，可以配置多个-->
+        <mvc:interceptor>
+            <!--设置拦截器的拦截路径，支持*通配-->
+            <!--/**         表示拦截所有映射-->
+            <!--/*          表示拦截所有/开头的映射-->
+            <!--/user/*     表示拦截所有/user/开头的映射-->
+            <!--/user/add*  表示拦截所有/user/开头，且具体映射名称以add开头的映射-->
+            <!--/user/*All  表示拦截所有/user/开头，且具体映射名称以All结尾的映射-->
+            <mvc:mapping path="/*"/>
+            <bean class="yf513.chy.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+        <!--配置多个拦截器，配置顺序即为最终运行顺序-->
+        <mvc:interceptor>
+            <mvc:mapping path="/*"/>
+            <bean class="yf513.chy.interceptor.MyInterceptor2"/>
+        </mvc:interceptor>
+
+    </mvc:interceptors>
+</beans>

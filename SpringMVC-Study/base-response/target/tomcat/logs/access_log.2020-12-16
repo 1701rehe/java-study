@@ -1,0 +1,14 @@
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:15:37:03 +0800] "GET / HTTP/1.1" 200 53 http-bio-80-exec-2 774
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:15:37:03 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-80-exec-3 17
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:15:37:11 +0800] "GET /showPageAndData1 HTTP/1.1" 200 74 http-bio-80-exec-4 170
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:15:40:30 +0800] "GET /showPageAndData2 HTTP/1.1" 200 74 http-bio-80-exec-2 233
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:15:40:35 +0800] "GET /showPageAndData2 HTTP/1.1" 200 74 http-bio-80-exec-3 4
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:15:41:28 +0800] "GET /showPageAndData2 HTTP/1.1" 200 154 http-bio-80-exec-4 623
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:15:41:42 +0800] "GET /showPageAndData2 HTTP/1.1" 200 162 http-bio-80-exec-5 76
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:15:43:13 +0800] "GET /showPageAndData3 HTTP/1.1" 200 163 http-bio-80-exec-2 127
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:15:45:10 +0800] "GET /showData1 HTTP/1.1" 200 5 http-bio-80-exec-2 65
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:15:45:41 +0800] "GET /showData1 HTTP/1.1" 200 5 http-bio-80-exec-3 2
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:15:45:54 +0800] "GET /showData1 HTTP/1.1" 200 5 http-bio-80-exec-4 2
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:15:47:11 +0800] "GET /showData1 HTTP/1.1" 200 3 http-bio-80-exec-2 61
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:15:51:08 +0800] "GET /showData2 HTTP/1.1" 200 38 http-bio-80-exec-2 115
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:15:51:17 +0800] "GET /showData3 HTTP/1.1" 200 57 http-bio-80-exec-3 20

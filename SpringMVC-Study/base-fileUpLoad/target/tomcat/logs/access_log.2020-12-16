@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:19:18:59 +0800] "GET / HTTP/1.1" 404 949 http-bio-80-exec-2 1498
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:19:19:10 +0800] "GET /fileupload.jsp HTTP/1.1" 200 313 http-bio-80-exec-3 465
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:19:19:12 +0800] "POST /fileupload HTTP/1.1" 200 44 http-bio-80-exec-4 268
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:19:19:30 +0800] "GET /fileupload.jsp HTTP/1.1" 200 313 http-bio-80-exec-5 2
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:19:19:30 +0800] "GET /favicon.ico HTTP/1.1" 404 949 http-bio-80-exec-6 2
+0:0:0:0:0:0:0:1 - - [16/Dec/2020:19:19:34 +0800] "POST /fileupload HTTP/1.1" 200 44 http-bio-80-exec-7 5

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+
+    <!--    <context:component-scan base-package="yf513.chy.service"/>-->
+
+    <!--dubbo的配置-->
+    <!--1.配置项目的名称-->
+    <dubbo:application name="dubbo-service"/>
+    <!--2.配置注册中心的地址-->
+    <dubbo:registry address="zookeeper://192.168.153.129:2181"/>
+    <!--3.配置包扫描-->
+    <dubbo:annotation package="yf513.chy.service.impl"/>
+
+    <!-- 元数据配置 -->
+    <dubbo:metadata-report address="zookeeper://192.168.153.129:2181" />
+</beans>
